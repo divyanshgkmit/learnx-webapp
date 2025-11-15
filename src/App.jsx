@@ -1,11 +1,18 @@
-import React from "react";
+import { Routes, Route } from 'react-router-dom'
+import { Toaster } from "@/components/ui/sonner"
+import Home from '@/pages/Home'
 
-const App = () => {
+function App() {
   return (
     <>
-      <h1>Hello React App Working!</h1>
+      <div className="min-h-screen">
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+        <Toaster />
+      </div>
     </>
-  );
-};
+  )
+}
 
-export default App;
+export default App
