@@ -1,3 +1,5 @@
+import { GraduationCap, Users, TrendingUp, Github, Twitter, Mail, Linkedin } from "lucide-react";
+
 export const FOOTER_LINKS = {
   PLATFORM: [
     { label: 'Courses', href: '/courses' },
@@ -11,25 +13,25 @@ export const SOCIAL_LINKS = [
   { 
     label: 'GitHub', 
     href: '#', 
-    icon: 'Github',
+    icon: Github,
     ariaLabel: 'GitHub'
   },
   { 
     label: 'Twitter', 
     href: '#', 
-    icon: 'Twitter',
+    icon: Twitter,
     ariaLabel: 'Twitter'
   },
   { 
     label: 'Email', 
     href: '#', 
-    icon: 'Mail',
+    icon: Mail,
     ariaLabel: 'Email'
   },
   { 
     label: 'LinkedIn', 
     href: '#', 
-    icon: 'Linkedin',
+    icon: Linkedin,
     ariaLabel: 'LinkedIn'
   }
 ];
@@ -63,7 +65,7 @@ export const FEATURE_CARDS = [
   {
     title: 'For Students',
     description: 'Learn at your own pace',
-    icon: 'GraduationCap',
+    icon: GraduationCap,
     color: 'blue',
     features: [
       'Access to expert-led video courses',
@@ -75,7 +77,7 @@ export const FEATURE_CARDS = [
   {
     title: 'For Instructors',
     description: 'Share your knowledge',
-    icon: 'Users',
+    icon: Users,
     color: 'purple',
     features: [
       'Create and manage courses easily',
@@ -87,7 +89,7 @@ export const FEATURE_CARDS = [
   {
     title: 'Platform Features',
     description: 'Modern learning experience',
-    icon: 'TrendingUp',
+    icon: TrendingUp,
     color: 'green',
     features: [
       'HD video streaming',

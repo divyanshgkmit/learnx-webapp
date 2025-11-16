@@ -10,40 +10,13 @@ import {
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { InteractiveDotBackground } from "@/components/ui/InteractiveDotBackground";
-import {
-  GraduationCap,
-  Users,
-  PlayCircle,
-  CheckCircle,
-  BookOpen,
-  Award,
-  Star,
-  TrendingUp,
-} from "lucide-react";
+import { PlayCircle, CheckCircle, BookOpen, Award, Star } from "lucide-react";
 import { ROUTES } from "@/constants/routes";
 import { STATS_DATA, STEPS_DATA, FEATURE_CARDS } from "@/constants";
 
 const Home = () => {
-  const renderFeatureIcon = (iconName, color) => {
-    const iconClass = `w-8 h-8 text-${color}-400`;
-    switch (iconName) {
-      case 'GraduationCap':
-        return <GraduationCap className={iconClass} />;
-      case 'Users':
-        return <Users className={iconClass} />;
-      case 'TrendingUp':
-        return <TrendingUp className={iconClass} />;
-      default:
-        return null;
-    }
-  };
-
-  const renderCheckCircle = (color) => {
-    return <CheckCircle className={`w-5 h-5 text-${color}-400 mt-0.5 shrink-0`} />;
-  };
-
   return (
-    <div className="min-h-screen bg-slate-950 text-white relative overflow-hidden">
+    <div className="min-h-screen bg-slate-950 text-white relative overflow-hidden selection:bg-blue-400/30 selection:text-white">
       <InteractiveDotBackground />
 
       <div className="relative z-10">
@@ -52,7 +25,7 @@ const Home = () => {
         <section className="py-20 px-4 relative">
           <div className="container mx-auto max-w-6xl">
             <div className="text-center">
-              <div className="inline-flex items-center gap-2 bg-blue-500/20 text-blue-300 px-4 py-2 rounded-full text-sm font-medium my-6 border border-blue-500/30">
+              <div className="inline-flex items-center gap-2 bg-blue-500/20 text-blue-300 px-4 py-2 rounded-full text-sm font-medium my-6 border border-blue-500/30 backdrop-blur-xs">
                 <Star className="w-4 h-4" />
                 Transform Your Learning Journey
               </div>
@@ -119,33 +92,46 @@ const Home = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {FEATURE_CARDS.map((card, index) => (
-                <Card key={index} className="text-center border-gray-800 bg-slate-800/50 backdrop-blur-sm">
-                  <CardHeader className="pb-4">
-                    <div className={`w-16 h-16 bg-${card.color}-500/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-${card.color}-500/30`}>
-                      {renderFeatureIcon(card.icon, card.color)}
-                    </div>
-                    <CardTitle className="text-xl text-white">
-                      {card.title}
-                    </CardTitle>
-                    <CardDescription className="text-gray-400">
-                      {card.description}
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <ul className="space-y-4 text-left">
-                      {card.features.map((feature, featureIndex) => (
-                        <li key={featureIndex} className="flex items-start space-x-3">
-                          {renderCheckCircle(card.color)}
-                          <span className="text-gray-300">
-                            {feature}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                </Card>
-              ))}
+              {FEATURE_CARDS.map((card, index) => {
+                const IconComponent = card.icon;
+                return (
+                  <Card
+                    key={index}
+                    className="text-center border-gray-800 bg-slate-800/50 backdrop-blur-xs"
+                  >
+                    <CardHeader className="pb-4">
+                      <div
+                        className={`w-16 h-16 bg-${card.color}-500/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-${card.color}-500/30`}
+                      >
+                        <IconComponent
+                          className={`w-8 h-8 text-${card.color}-400`}
+                        />
+                      </div>
+                      <CardTitle className="text-xl text-white">
+                        {card.title}
+                      </CardTitle>
+                      <CardDescription className="text-gray-400">
+                        {card.description}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <ul className="space-y-4 text-left">
+                        {card.features.map((feature, featureIndex) => (
+                          <li
+                            key={featureIndex}
+                            className="flex items-start space-x-3"
+                          >
+                            <CheckCircle
+                              className={`w-5 h-5 text-${card.color}-400 mt-0.5 shrink-0`}
+                            />
+                            <span className="text-gray-300">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -165,14 +151,14 @@ const Home = () => {
               {STEPS_DATA.map((step, index) => (
                 <div key={index} className="text-center">
                   <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-blue-500/30">
-                    <span className="text-blue-400 font-bold text-lg">{step.number}</span>
+                    <span className="text-blue-400 font-bold text-lg">
+                      {step.number}
+                    </span>
                   </div>
                   <h3 className="text-xl font-semibold text-white mb-2">
                     {step.title}
                   </h3>
-                  <p className="text-gray-400">
-                    {step.description}
-                  </p>
+                  <p className="text-gray-400">{step.description}</p>
                 </div>
               ))}
             </div>
@@ -187,21 +173,21 @@ const Home = () => {
               Ready to Transform Your Skills?
             </h2>
             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto leading-relaxed">
-              Join LearnX today and unlock access to world-class courses,
-              expert instructors, and a community of passionate learners.
+              Join LearnX today and unlock access to world-class courses, expert
+              instructors, and a community of passionate learners.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
                 asChild
                 size="lg"
-                className="bg-white text-black hover:bg-gray-100 px-8 py-3 font-semibold border-0"
+                className="bg-white text-black hover:bg-gray-100 px-8 py-3 text-md font-semibold border-0 cursor-pointer"
               >
                 <Link to={ROUTES.REGISTER}>Start Learning Now</Link>
               </Button>
               <Button
                 asChild
                 size="lg"
-                className="bg-blue-600 text-white hover:bg-blue-500 px-8 py-3 font-semibold"
+                className="bg-blue-600 text-white hover:bg-blue-500 px-8 py-3 text-md font-semibold border-0 cursor-pointer"
               >
                 <Link to={ROUTES.COURSES}>View Course Catalog</Link>
               </Button>

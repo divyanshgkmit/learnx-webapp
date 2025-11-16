@@ -83,10 +83,10 @@ const Header = () => {
         </div>
 
         {isMenuOpen && (
-          <div className="md:hidden top-full left-0 right-0 w-full backdrop-blur-lg border-y border-gray-800 shadow-xl my-3">
-            <div className="container mx-auto py-6 space-y-4">
+          <div className="md:hidden top-full left-0 right-0 w-full backdrop-blur-lg border-t border-gray-800 shadow-xl mt-3">
+            <div className="container mx-auto pt-6 space-y-4">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 border-slate-800/50" />
                 <Input
                   type="text"
                   placeholder="Search courses..."
@@ -99,7 +99,7 @@ const Header = () => {
                   <Link
                     key={item.label}
                     to={item.href}
-                    className="block py-3 px-4 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg transition-all duration-200 font-medium"
+                    className="block py-1.5 px-4 text-gray-300 hover:text-white bg-gray-800/50 rounded-lg transition-all duration-200 font-medium border border-slate-800/50"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {item.label}
@@ -107,7 +107,7 @@ const Header = () => {
                 ))}
               </div>
 
-              <div className="pt-4 border-t border-gray-800 space-y-3">
+              <div className="pt-4 border-t border-gray-400/40 space-y-3">
                 <Button
                   asChild
                   variant="ghost"

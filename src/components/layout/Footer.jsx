@@ -4,21 +4,6 @@ import { ROUTES } from "@/constants/routes";
 import { FOOTER_LINKS, SOCIAL_LINKS } from "@/constants";
 
 const Footer = () => {
-  const renderSocialIcon = (iconName) => {
-    switch (iconName) {
-      case 'Github':
-        return <Github className="w-5 h-5" />;
-      case 'Twitter':
-        return <Twitter className="w-5 h-5" />;
-      case 'Mail':
-        return <Mail className="w-5 h-5" />;
-      case 'Linkedin':
-        return <Linkedin className="w-5 h-5" />;
-      default:
-        return null;
-    }
-  };
-
   return (
     <footer className="border-t border-gray-800/50">
       <div className="container mx-auto max-w-6xl px-4 py-12">
@@ -57,16 +42,19 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Connect</h3>
             <div className="flex space-x-4">
-              {SOCIAL_LINKS.map((social) => (
-                <Link
-                  key={social.label}
-                  to={social.href}
-                  className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-gray-800/50 rounded-lg"
-                  aria-label={social.ariaLabel}
-                >
-                  {renderSocialIcon(social.icon)}
-                </Link>
-              ))}
+              {SOCIAL_LINKS.map((social) => {
+                const IconComponent = social.icon;
+                return (
+                  <Link
+                    key={social.label}
+                    to={social.href}
+                    className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-gray-800/50 rounded-lg"
+                    aria-label={social.ariaLabel}
+                  >
+                    <IconComponent className="w-5 h-5" />
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -80,7 +68,7 @@ const Footer = () => {
             <div className="flex items-center space-x-1 text-gray-400 text-sm">
               <span>Made with</span>
               <Heart className="w-4 h-4 text-blue-400 fill-current animate-pulse" />
-              <span>by <a href="https://github.com/divyanshgkmit" target="_blank" className="hover:text-blue-400 cursor-pointer">Divyansh</a></span>
+              <span>by <a href="https://github.com/divyanshgkmit" target="_blank" className="hover:text-blue-400 underline cursor-pointer">Divyansh</a></span>
             </div>
           </div>
         </div>
