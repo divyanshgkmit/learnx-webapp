@@ -67,6 +67,8 @@ export const FEATURE_CARDS = [
     description: 'Learn at your own pace',
     icon: GraduationCap,
     color: 'blue',
+    textClass: "text-blue-400",
+    utilityClass: "feature-card-blue",
     features: [
       'Access to expert-led video courses',
       'Track your learning progress',
@@ -79,6 +81,8 @@ export const FEATURE_CARDS = [
     description: 'Share your knowledge',
     icon: Users,
     color: 'purple',
+    textClass: "text-purple-400",
+    utilityClass: "feature-card-purple",
     features: [
       'Create and manage courses easily',
       'Upload and stream video content',
@@ -91,6 +95,8 @@ export const FEATURE_CARDS = [
     description: 'Modern learning experience',
     icon: TrendingUp,
     color: 'green',
+    textClass: "text-green-400",
+    utilityClass: "feature-card-green",
     features: [
       'HD video streaming',
       'Mobile-friendly design',

@@ -101,10 +101,10 @@ const Home = () => {
                   >
                     <CardHeader className="pb-4">
                       <div
-                        className={`w-16 h-16 bg-${card.color}-500/20 rounded-full flex items-center justify-center mx-auto mb-4 border border-${card.color}-500/30`}
+                        className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border ${card.utilityClass}`}
                       >
                         <IconComponent
-                          className={`w-8 h-8 text-${card.color}-400`}
+                          className={`w-8 h-8`}
                         />
                       </div>
                       <CardTitle className="text-xl text-white">
@@ -122,7 +122,7 @@ const Home = () => {
                             className="flex items-start space-x-3"
                           >
                             <CheckCircle
-                              className={`w-5 h-5 text-${card.color}-400 mt-0.5 shrink-0`}
+                              className={`w-5 h-5 ${card.textClass} mt-0.5 shrink-0`}
                             />
                             <span className="text-gray-300">{feature}</span>
                           </li>
