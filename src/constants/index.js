@@ -1,11 +1,12 @@
 import { GraduationCap, Users, TrendingUp, Github, Twitter, Mail, Linkedin } from "lucide-react";
+import { ROUTES } from "./routes";
 
 export const FOOTER_LINKS = {
   PLATFORM: [
-    { label: 'Courses', href: '/courses' },
-    { label: 'Dashboard', href: '/dashboard' },
-    { label: 'Sign In', href: '/signin' },
-    { label: 'Get Started', href: '/register' }
+    { label: 'Courses', href: ROUTES.COURSES },
+    { label: 'Dashboard', href: ROUTES.DASHBOARD },
+    { label: 'Sign In', href: ROUTES.LOGIN },
+    { label: 'Get Started', href: ROUTES.REGISTER }
   ]
 };
 

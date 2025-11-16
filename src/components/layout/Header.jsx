@@ -14,7 +14,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="backdrop-blur-sm w-full fixed top-0 z-50 border-b-2 border-gray-800/50">
+    <header className="backdrop-blur-sm w-full sticky top-0 z-50 border-b-2 border-gray-800/50">
       <div className="container mx-auto px-4 py-3">
         <div className="flex items-center justify-between">
           <Link
@@ -59,7 +59,7 @@ const Header = () => {
               size="sm"
               className="text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-200"
             >
-              <Link to={ROUTES.SIGN_IN}>Sign in</Link>
+              <Link to={ROUTES.LOGIN}>Sign in</Link>
             </Button>
             <Button
               asChild
@@ -114,7 +114,7 @@ const Header = () => {
                   className="w-full text-black bg-white justify-center hover:bg-gray-300 transition-all duration-200"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <Link to={ROUTES.SIGN_IN}>Sign in</Link>
+                  <Link to={ROUTES.LOGIN}>Sign in</Link>
                 </Button>
                 <Button
                   asChild

@@ -7,24 +7,17 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
-import { InteractiveDotBackground } from "@/components/ui/InteractiveDotBackground";
 import { PlayCircle, CheckCircle, BookOpen, Award, Star } from "lucide-react";
 import { ROUTES } from "@/constants/routes";
 import { STATS_DATA, STEPS_DATA, FEATURE_CARDS } from "@/constants";
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-slate-950 text-white relative overflow-hidden selection:bg-blue-400/30 selection:text-white">
-      <InteractiveDotBackground />
-
-      <div className="relative z-10">
-        <Header />
-
-        <section className="py-20 px-4 relative">
-          <div className="container mx-auto max-w-6xl">
-            <div className="text-center">
+    <div className="space-y-24">
+      
+      <section className="px-4">
+        <div className="container mx-auto max-w-6xl text-center">
+          <div className="text-center">
               <div className="inline-flex items-center gap-2 bg-blue-500/20 text-blue-300 px-4 py-2 rounded-full text-sm font-medium my-6 border border-blue-500/30 backdrop-blur-xs">
                 <Star className="w-4 h-4" />
                 Transform Your Learning Journey
@@ -61,10 +54,10 @@ const Home = () => {
                 </Button>
               </div>
             </div>
-          </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="py-6">
+        <section>
           <div className="container mx-auto max-w-4xl px-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               {STATS_DATA.map((stat, index) => (
@@ -79,7 +72,7 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="py-15">
+        <section>
           <div className="container mx-auto max-w-6xl px-4">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -136,7 +129,7 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="py-15">
+        <section>
           <div className="container mx-auto max-w-4xl px-4">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
@@ -165,7 +158,7 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="py-15 text-white relative">
+        <section className="text-white relative">
           <div className="absolute inset-0"></div>
           <div className="container mx-auto max-w-4xl px-4 text-center relative z-10">
             <Award className="w-16 h-16 mx-auto mb-6 text-blue-500/90" />
@@ -195,8 +188,6 @@ const Home = () => {
           </div>
         </section>
 
-        <Footer />
-      </div>
     </div>
   );
 };
