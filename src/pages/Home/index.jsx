@@ -10,14 +10,19 @@ import {
 import { PlayCircle, CheckCircle, BookOpen, Award, Star } from "lucide-react";
 import { ROUTES } from "@/constants/routes";
 import { STATS_DATA, STEPS_DATA, FEATURE_CARDS } from "@/constants";
+import InteractiveDotBackground from "./InteractiveDotBackground";
 
 const Home = () => {
   return (
-    <div className="space-y-24">
-      
-      <section className="px-4">
-        <div className="container mx-auto max-w-6xl text-center">
-          <div className="text-center">
+    <div className="relative">
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <InteractiveDotBackground />
+      </div>
+
+      <div className="relative z-10 space-y-24 pb-10">
+        <section className="px-4">
+          <div className="container mx-auto max-w-6xl text-center">
+            <div className="text-center">
               <div className="inline-flex items-center gap-2 bg-blue-500/20 text-blue-300 px-4 py-2 rounded-full text-sm font-medium my-6 border border-blue-500/30 backdrop-blur-xs">
                 <Star className="w-4 h-4" />
                 Transform Your Learning Journey
@@ -26,9 +31,9 @@ const Home = () => {
                 Learn Without <span className="text-blue-400">Limits</span>
               </h1>
               <p className="text-xl text-gray-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-                Join thousands of students and instructors in our
-                comprehensive learning platform. Master new skills with
-                expert-led courses and interactive video content.
+                Join thousands of students and instructors in our comprehensive
+                learning platform. Master new skills with expert-led courses and
+                interactive video content.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                 <Button
@@ -36,7 +41,10 @@ const Home = () => {
                   size="lg"
                   className="min-w-2xs bg-blue-600 hover:bg-blue-700 text-white px-8 py-5 text-lg border-0"
                 >
-                  <Link to={ROUTES.REGISTER} className="flex items-center gap-2">
+                  <Link
+                    to={ROUTES.REGISTER}
+                    className="flex items-center gap-2"
+                  >
                     <PlayCircle className="w-5 h-5" />
                     Start Learning
                   </Link>
@@ -54,18 +62,18 @@ const Home = () => {
                 </Button>
               </div>
             </div>
-        </div>
-      </section>
+          </div>
+        </section>
 
         <section>
           <div className="container mx-auto max-w-4xl px-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
               {STATS_DATA.map((stat, index) => (
                 <div key={index} className="space-y-2">
-                  <div className="text-3xl font-bold text-blue-400">{stat.value}</div>
-                  <div className="text-gray-400 font-medium">
-                    {stat.label}
+                  <div className="text-3xl font-bold text-blue-400">
+                    {stat.value}
                   </div>
+                  <div className="text-gray-400 font-medium">{stat.label}</div>
                 </div>
               ))}
             </div>
@@ -79,8 +87,8 @@ const Home = () => {
                 Everything You Need to Succeed
               </h2>
               <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-                Comprehensive tools and features designed for effective
-                learning and teaching
+                Comprehensive tools and features designed for effective learning
+                and teaching
               </p>
             </div>
 
@@ -96,9 +104,7 @@ const Home = () => {
                       <div
                         className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border ${card.utilityClass}`}
                       >
-                        <IconComponent
-                          className={`w-8 h-8`}
-                        />
+                        <IconComponent className={`w-8 h-8`} />
                       </div>
                       <CardTitle className="text-xl text-white">
                         {card.title}
@@ -187,7 +193,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-
+      </div>
     </div>
   );
 };
