@@ -106,3 +106,8 @@ export const FEATURE_CARDS = [
     ]
   }
 ];
+
+export const USER_ROLES = {
+  STUDENT: 'Student',
+  INSTRUCTOR: 'Instructor'
+};

@@ -1,28 +1,51 @@
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "@/components/ui/sonner";
 import Layout from "@/components/layout/Layout";
+import ProtectedRoute from "@/routes/ProtectedRoute";
+import PublicRoute from "@/routes/PublicRoute";
 import Home from "@/pages/Home";
-import Login from "@/pages/Login";
-import Register from "@/pages/Register";
+import Dashboard from "@/pages/dashboard";
 import Courses from "@/pages/Courses";
-import Dashboard from "@/pages/Dashboard";
+import Login from "@/pages/auth/Login";
+import Register from "@/pages/auth/Register";
 import { ROUTES } from "@/constants/routes";
 
-const App = () => {
+function App() {
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <Toaster position="bottom-right" />
       <Routes>
         <Route element={<Layout />}>
-          <Route path={ROUTES.HOME} element={<Home />} />
+          <Route index path={ROUTES.HOME} element={<Home />} />
+          <Route
+            path={ROUTES.LOGIN}
+            element={
+              <PublicRoute>
+                <Login />
+              </PublicRoute>
+            }
+          />
+          <Route
+            path={ROUTES.REGISTER}
+            element={
+              <PublicRoute>
+                <Register />
+              </PublicRoute>
+            }
+          />
           <Route path={ROUTES.COURSES} element={<Courses />} />
-          <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />
-          <Route path={ROUTES.LOGIN} element={<Login />} />
-          <Route path={ROUTES.REGISTER} element={<Register />} />
+          <Route
+            path={ROUTES.DASHBOARD}
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
         </Route>
       </Routes>
-      <Toaster />
-    </div>
+    </>
   );
-};
+}
 
 export default App;
