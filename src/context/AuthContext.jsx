@@ -1,6 +1,7 @@
 import { createContext, useState, useEffect } from "react";
 import { authAPI } from "@/services/api";
 import { toast } from "@/components/ui/sonner";
+import { tokenService } from "@/utils/token";
 
 const AuthContext = createContext();
 
@@ -14,7 +15,7 @@ export const AuthProvider = ({ children }) => {
 
   const checkAuthStatus = async () => {
     try {
-      const token = localStorage.getItem("token");
+      const token = tokenService.getToken();
       if (token) {
         const userData = await authAPI.getCurrentUser();
         const userWithRole = {
@@ -24,7 +25,7 @@ export const AuthProvider = ({ children }) => {
         setUser(userWithRole);
       }
     } catch (error) {
-      localStorage.removeItem("token");
+      tokenService.removeToken();
       console.error("Auth check failed:", error);
     } finally {
       setLoading(false);
@@ -36,7 +37,7 @@ export const AuthProvider = ({ children }) => {
       const response = await authAPI.login(email, password);
       const { token, user: userData, roles } = response.data.data;
       const userWithRole = { ...userData, role: roles?.[0] || "Student" };
-      localStorage.setItem("token", token);
+      tokenService.setToken(token);
       setUser(userWithRole);
       toast.success("Login successful!");
       return response;
@@ -52,7 +53,7 @@ export const AuthProvider = ({ children }) => {
       const response = await authAPI.register(userData);
       const { token, user: u, role } = response.data.data;
       setUser({ ...u, role: role || "Student" });
-      localStorage.setItem("token", token);
+      tokenService.setToken(token);
       toast.success("Registration successful!");
       return response;
     } catch (error) {
@@ -63,7 +64,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = () => {
-    localStorage.removeItem("token");
+    tokenService.removeToken();
     setUser(null);
     toast.success("Logged out successfully");
   };
