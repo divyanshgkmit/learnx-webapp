@@ -74,6 +74,7 @@ const Register = () => {
                     placeholder="Enter your full name" 
                     value={formData.fullName} 
                     onChange={handleChange} 
+                    autocomplete="name"
                     className="bg-gray-800/50 border-gray-700 text-white pl-10" 
                     required 
                   />
@@ -90,6 +91,7 @@ const Register = () => {
                     placeholder="Enter your email" 
                     value={formData.email} 
                     onChange={handleChange} 
+                    autocomplete="email"
                     className="bg-gray-800/50 border-gray-700 text-white pl-10" 
                     required 
                   />
@@ -106,6 +108,7 @@ const Register = () => {
                     placeholder="Create password" 
                     value={formData.password} 
                     onChange={handleChange} 
+                    autocomplete="new-password"
                     className="bg-gray-800/50 border-gray-700 text-white pl-10 pr-10" 
                     required 
                   />
@@ -125,6 +128,7 @@ const Register = () => {
                     placeholder="Confirm password" 
                     value={formData.confirmPassword} 
                     onChange={handleChange} 
+                    autocomplete="new-password"
                     className="bg-gray-800/50 border-gray-700 text-white pl-10 pr-10" 
                     required 
                   />

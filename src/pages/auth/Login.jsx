@@ -56,6 +56,7 @@ const Login = () => {
                     placeholder="Enter your email" 
                     value={formData.email} 
                     onChange={handleChange} 
+                    autoComplete="email"
                     className="bg-gray-800/50 border-gray-700 text-white pl-10" 
                     required 
                   />
@@ -72,6 +73,7 @@ const Login = () => {
                     placeholder="Enter password" 
                     value={formData.password} 
                     onChange={handleChange} 
+                    autoComplete="current-password"
                     className="bg-gray-800/50 border-gray-700 text-white pl-10 pr-10" 
                     required 
                   />

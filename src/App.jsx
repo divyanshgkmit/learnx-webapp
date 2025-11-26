@@ -5,7 +5,10 @@ import ProtectedRoute from "@/routes/ProtectedRoute";
 import PublicRoute from "@/routes/PublicRoute";
 import Home from "@/pages/Home";
 import Dashboard from "@/pages/dashboard";
+import CourseEditor from "@/pages/dashboard/CourseEditor";
 import Courses from "@/pages/Courses";
+import CourseDetail from "@/pages/CourseDetail";
+import WatchCourse from "@/pages/learning/WatchCourse";
 import Login from "@/pages/auth/Login";
 import Register from "@/pages/auth/Register";
 import { ROUTES } from "@/constants/routes";
@@ -34,11 +37,28 @@ function App() {
             }
           />
           <Route path={ROUTES.COURSES} element={<Courses />} />
+          <Route path={ROUTES.COURSE_DETAIL} element={<CourseDetail />} />
           <Route
             path={ROUTES.DASHBOARD}
             element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={ROUTES.COURSE_EDITOR}
+            element={
+              <ProtectedRoute>
+                <CourseEditor />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={ROUTES.LEARN}
+            element={
+              <ProtectedRoute>
+                <WatchCourse />
               </ProtectedRoute>
             }
           />
