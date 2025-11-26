@@ -104,7 +104,7 @@ const Home = () => {
                       <div
                         className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border ${card.utilityClass}`}
                       >
-                        <IconComponent className={`w-8 h-8`} />
+                        <IconComponent className="w-8 h-8" />
                       </div>
                       <CardTitle className="text-xl text-white">
                         {card.title}
