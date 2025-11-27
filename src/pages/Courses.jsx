@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { courseAPI } from "@/services/api";
 import { toast } from "@/components/ui/sonner";
 import { Search, User, BookOpen, Tag, Globe, Layers } from "lucide-react";
+import { filterCourses } from "../utils/filterCourses";
 
 const fallbackImage =
   "https://placehold.co/600x400/1e293b/ffffff?text=No+Thumbnail";
@@ -27,15 +28,7 @@ export default function Courses() {
     getCourses();
   }, []);
 
-  const filtered = courses.filter((c) => {
-    const q = search.toLowerCase();
-    return (
-      c.title.toLowerCase().includes(q) ||
-      c.category.toLowerCase().includes(q) ||
-      c.description.toLowerCase().includes(q) ||
-      c.difficultyLevel.toLowerCase().includes(q)
-    );
-  });
+  const filtered = filterCourses(courses, search);
 
   return (
     <div className="w-full px-4 pt-6 pb-12">

@@ -131,9 +131,7 @@ const InstructorDashboard = () => {
     setLoadingCourses(true);
     try {
       const response = await courseAPI.getInstructorCourses(instructorId);
-      const items = Array.isArray(response)
-        ? response
-        : response?.data || response?.courses || [];
+      const items = response || [];
       setCourses(items);
     } catch (error) {
       console.error(error);

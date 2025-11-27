@@ -51,6 +51,8 @@ export const enrollmentAPI = {
   status: (courseId) => api.get(`/enrollments/course/${courseId}/status`).then((res) => res.data.data),
   getStudentEnrollments: (studentId) =>
     api.get(`/enrollments/student/${studentId}`).then((res) => res.data.data),
+  markAsCompleted: (courseId) => 
+  api.patch(`/enrollments/course/${courseId}/complete`).then(res => res.data.data),
 };
 
 const multipartConfig = {

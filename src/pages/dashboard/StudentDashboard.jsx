@@ -29,12 +29,12 @@ const CourseCard = ({ enrollment }) => {
   const [isCompleted, setIsCompleted] = useState(enrollment.isCompleted || false);
   const [markingComplete, setMarkingComplete] = useState(false);
 
-  const handleToggleComplete = async () => {
+  const handleMarkComplete = async () => {
     setMarkingComplete(true);
     try {
-      await new Promise(resolve => setTimeout(resolve, 500));
-      setIsCompleted(!isCompleted);
-      toast.success(isCompleted ? "Course marked as incomplete" : "Course marked as completed!");
+      await enrollmentAPI.markAsCompleted(courseId);
+      setIsCompleted(true);
+      toast.success("Course marked as completed!");
     } catch (error) {
       toast.error("Failed to update course status");
     } finally {
@@ -78,15 +78,10 @@ const CourseCard = ({ enrollment }) => {
         </span>
       </div>
       
-      {/* Toggle Complete Button */}
       <Button
-        onClick={handleToggleComplete}
-        disabled={markingComplete}
-        className={`w-full mb-2 flex items-center justify-center gap-2 ${
-          isCompleted 
-            ? "bg-gray-600 hover:bg-gray-700 text-white" 
-            : "bg-green-600 hover:bg-green-700 text-white"
-        }`}
+        onClick={handleMarkComplete}
+        disabled={markingComplete || isCompleted}
+        className="w-full mb-2 flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white"
         size="sm"
       >
         {markingComplete ? (
@@ -94,7 +89,7 @@ const CourseCard = ({ enrollment }) => {
         ) : isCompleted ? (
           <>
             <CheckCircle2 className="w-4 h-4" />
-            Mark Incomplete
+            Completed
           </>
         ) : (
           <>
@@ -125,15 +120,15 @@ const StudentDashboard = () => {
 
   useEffect(() => {
     const fetchEnrollments = async () => {
-      if (!user?._id && !user?.id) {
+      if (!user?.id) {
         setLoading(false);
         return;
       }
       setLoading(true);
       try {
-        const studentId = user._id || user.id || user.userId;
+        const studentId = user.id;
         const data = await enrollmentAPI.getStudentEnrollments(studentId);
-        const normalized = Array.isArray(data) ? data : data?.data || [];
+        const normalized = data || [];
         setEnrollments(normalized);
       } catch (error) {
         console.error("Failed to fetch enrollments:", error);
@@ -212,7 +207,7 @@ const StudentDashboard = () => {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {enrollments.map((enrollment) => (
-                <CourseCard key={enrollment._id || enrollment.courseId?._id} enrollment={enrollment} />
+                <CourseCard key={enrollment._id} enrollment={enrollment} />
               ))}
             </div>
           )}
