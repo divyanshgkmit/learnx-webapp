@@ -196,7 +196,7 @@ export default function CourseDetail() {
               <div className="flex flex-wrap gap-4 sm:gap-6 text-sm text-gray-300">
                 <StatPill
                   icon={<Star className="w-4 h-4 text-yellow-400" />}
-                  value={`${(course.rating ?? 4.8).toFixed(1)} Rating`}
+                  value="4.8 Rating"
                 />
                 <StatPill
                   icon={<Users className="w-4 h-4 text-green-400" />}
