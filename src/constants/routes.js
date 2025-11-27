@@ -6,5 +6,6 @@ export const ROUTES = {
   COURSE_EDITOR: '/dashboard/courses/:courseId/edit',
   LEARN: '/learn/:courseId',
   REGISTER: '/register',
-  LOGIN: '/login'
+  LOGIN: '/login',
+  PROFILE: '/profile'
 };

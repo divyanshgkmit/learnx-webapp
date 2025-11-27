@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { toast } from "@/components/ui/sonner";
+import { Button } from "@/components/ui/Button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
+import { toast } from "@/components/ui/Sonner";
 import { moduleAPI, courseAPI } from "@/services/api";
 import { ROUTES } from "@/constants/routes";
 import { Loader2, Play, Clock, ArrowLeft, BookOpen, Video, List } from "lucide-react";

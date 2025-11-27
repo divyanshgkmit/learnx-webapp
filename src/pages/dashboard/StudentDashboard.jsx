@@ -1,11 +1,11 @@
 import { useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card";
+import { Button } from "@/components/ui/Button";
 import { BookOpen, PlayCircle, Clock, Award, Loader2, CheckCircle2 } from "lucide-react";
 import { enrollmentAPI } from "@/services/api";
 import { useAuth } from "@/hooks/useAuth";
-import { toast } from "@/components/ui/sonner";
+import { toast } from "@/components/ui/Sonner";
 import { ROUTES } from "@/constants/routes";
 
 const StatCard = ({ title, value, icon: Icon, iconColor, description }) => (

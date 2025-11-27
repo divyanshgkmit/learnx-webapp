@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/components/ui/Card";
 import { PlayCircle, CheckCircle, BookOpen, Award, Star } from "lucide-react";
 import { ROUTES } from "@/constants/routes";
 import { STATS_DATA, STEPS_DATA, FEATURE_CARDS } from "@/constants";

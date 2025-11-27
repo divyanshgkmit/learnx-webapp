@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/Card";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
 import { courseAPI } from "@/services/api";
-import { toast } from "@/components/ui/sonner";
+import { toast } from "@/components/ui/Sonner";
 import { Search, User, BookOpen, Tag, Globe, Layers } from "lucide-react";
 import { filterCourses } from "../utils/filterCourses";
 

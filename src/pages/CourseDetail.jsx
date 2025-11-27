@@ -11,15 +11,15 @@ import {
   Users,
 } from "lucide-react";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/Button";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { toast } from "@/components/ui/sonner";
+} from "@/components/ui/Card";
+import { Badge } from "@/components/ui/Badge";
+import { toast } from "@/components/ui/Sonner";
 import { courseAPI, enrollmentAPI, moduleAPI } from "@/services/api";
 import { useAuth } from "@/hooks/useAuth";
 import { ROUTES } from "@/constants/routes";
@@ -104,11 +104,6 @@ export default function CourseDetail() {
   const handleEnroll = async () => {
     if (!user) {
       toast.info("Please login to enroll in this course");
-      return;
-    }
-
-    if (user?.role !== "Student") {
-      toast.info("Only students can enroll in courses");
       return;
     }
 
@@ -201,12 +196,10 @@ export default function CourseDetail() {
               <div className="flex flex-wrap gap-4 sm:gap-6 text-sm text-gray-300">
                 <StatPill
                   icon={<Star className="w-4 h-4 text-yellow-400" />}
-                  label="rating"
-                  value={(course.rating ?? 4.8).toFixed(1)}
+                  value={`${(course.rating ?? 4.8).toFixed(1)} Rating`}
                 />
                 <StatPill
                   icon={<Users className="w-4 h-4 text-green-400" />}
-                  label="students"
                   value={
                     course.students
                       ? course.students.toLocaleString()
@@ -215,13 +208,11 @@ export default function CourseDetail() {
                 />
                 <StatPill
                   icon={<Clock className="w-4 h-4 text-purple-400" />}
-                  label="duration"
                   value={course.duration || "Self-paced"}
                 />
                 <StatPill
                   icon={<BookOpen className="w-4 h-4 text-blue-400" />}
-                  label="lessons"
-                  value={`${course.lessons || modules.length} lessons`}
+                  value={`${course.lessons || modules.length} Lessons`}
                 />
               </div>
 

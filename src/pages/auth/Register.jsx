@@ -1,13 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card";
+import { Label } from "@/components/ui/Label";
 import { ROUTES } from "@/constants/routes";
 import { useState } from "react";
 import { Eye, EyeOff, User, Mail, Lock, GraduationCap, Users } from "lucide-react";
 import { useAuth } from '@/hooks/useAuth';
 import { USER_ROLES } from '@/constants';
+import { toast } from "@/components/ui/Sonner";
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -36,7 +37,7 @@ const Register = () => {
     e.preventDefault();
     
     if (formData.password !== formData.confirmPassword) {
-      alert('Passwords do not match');
+      toast.error('Passwords do not match');
       return;
     }
 

@@ -17,8 +17,11 @@ api.interceptors.response.use(
   (res) => res,
   (error) => {
     if (error.response?.status === 401) {
-      localStorage.removeItem("token");
-      window.location.href = "/login";
+      const currentUrl = window.location.pathname;
+      if (!currentUrl.includes('/login') && !currentUrl.includes('/register')) {
+        localStorage.removeItem("token");
+        window.location.href = "/login";
+      }
     }
     return Promise.reject(error);
   }

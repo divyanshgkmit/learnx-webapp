@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card";
+import { Label } from "@/components/ui/Label";
 import { ROUTES } from "@/constants/routes";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 import { useAuth } from "@/hooks/useAuth";
