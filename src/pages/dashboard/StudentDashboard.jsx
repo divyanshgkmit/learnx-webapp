@@ -24,7 +24,6 @@ const StatCard = ({ title, value, icon: Icon, iconColor, description }) => (
 const CourseCard = ({ enrollment }) => {
   const course = enrollment.courseId || enrollment;
   const courseId = course._id || course.id;
-  const progress = enrollment.progress || 0;
   
   const [isCompleted, setIsCompleted] = useState(enrollment.isCompleted || false);
   const [markingComplete, setMarkingComplete] = useState(false);
@@ -43,31 +42,25 @@ const CourseCard = ({ enrollment }) => {
   };
 
   return (
-    <div className="border border-gray-700 rounded-lg p-4 hover:border-gray-600 transition-colors bg-slate-800/40">
+    <div className="border border-gray-700 rounded-xl p-4 bg-slate-800/40 hover:border-gray-600 transition-colors flex flex-col h-full">
       <div className="flex justify-between items-start mb-3">
-        <h4 className="font-semibold text-white text-base md:text-lg line-clamp-2">{course.title}</h4>
+        <h4 className="font-semibold text-white text-base md:text-lg truncate max-w-[75%]">{course.title}</h4>
         {isCompleted ? (
           <div className="bg-green-500/20 text-green-300 px-2 py-1 rounded text-xs font-medium border border-green-500/30">
             Completed
           </div>
         ) : (
           <div className="bg-blue-500/20 text-blue-300 px-2 py-1 rounded text-xs font-medium border border-blue-500/30">
-            {progress}%
+            In Progress
           </div>
         )}
       </div>
-      <p className="text-sm md:text-base text-gray-400 mb-2">
+
+      <p className="text-sm md:text-base text-gray-400 mb-4">
         {course.category || "Uncategorized"}
       </p>
-      {!isCompleted && (
-        <div className="w-full bg-gray-700 rounded-full h-2 mb-3">
-          <div
-            className="bg-blue-500 h-2 rounded-full transition-all duration-300"
-            style={{ width: `${progress}%` }}
-          />
-        </div>
-      )}
-      <div className="flex justify-between text-xs text-gray-400 mb-3">
+
+      <div className="flex justify-between text-xs text-gray-400 mb-4">
         <span className="flex items-center gap-1">
           <Clock className="w-3 h-3" />
           {course.difficultyLevel || "All Levels"}
@@ -77,38 +70,47 @@ const CourseCard = ({ enrollment }) => {
           {course.primaryLanguage || "English"}
         </span>
       </div>
-      
-      <Button
-        onClick={handleMarkComplete}
-        disabled={markingComplete || isCompleted}
-        className="w-full mb-2 flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white"
-        size="sm"
-      >
-        {markingComplete ? (
-          <Loader2 className="w-4 h-4 animate-spin" />
-        ) : isCompleted ? (
-          <>
+
+      <div className="mt-auto">
+
+        {isCompleted ? (
+          <Button
+            disabled
+            className="w-full mb-2 flex items-center justify-center gap-2 bg-green-700/80 border border-green-600/50 text-green-300 cursor-default"
+            size="sm"
+          >
             <CheckCircle2 className="w-4 h-4" />
             Completed
-          </>
+          </Button>
         ) : (
-          <>
-            <Award className="w-4 h-4" />
-            Mark Complete
-          </>
+          <Button
+            onClick={handleMarkComplete}
+            disabled={markingComplete}
+            className="w-full mb-2 flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white"
+            size="sm"
+          >
+            {markingComplete ? (
+              <Loader2 className="w-4 h-4 animate-spin" />
+            ) : (
+              <>
+                <Award className="w-4 h-4" />
+                Mark Complete
+              </>
+            )}
+          </Button>
         )}
-      </Button>
-      
-      <Button
-        asChild
-        className="w-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center gap-2"
-        size="sm"
-      >
-        <Link to={ROUTES.LEARN.replace(":courseId", courseId)}>
-          <PlayCircle className="w-4 h-4" />
-          {isCompleted ? "Review Course" : "Continue Learning"}
-        </Link>
-      </Button>
+
+        <Button
+          asChild
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center gap-2"
+          size="sm"
+        >
+          <Link to={ROUTES.LEARN.replace(":courseId", courseId)}>
+            <PlayCircle className="w-4 h-4" />
+            {isCompleted ? "Review Course" : "Continue Learning"}
+          </Link>
+        </Button>
+      </div>
     </div>
   );
 };
