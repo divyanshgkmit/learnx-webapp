@@ -124,13 +124,6 @@ const Header = () => {
                   >
                     Dashboard
                   </Link>
-                  <Link
-                    to={ROUTES.PROFILE}
-                    className="block py-3 px-4 text-gray-300 hover:text-white bg-gray-800/50 rounded-lg transition-all duration-200 font-medium border border-gray-700/50 hover:border-gray-600"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Profile
-                  </Link>
                 </>
               )}
             </div>
