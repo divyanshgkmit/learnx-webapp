@@ -83,7 +83,7 @@ export default function CourseDetail() {
       setCheckingEnrollment(true);
       try {
         const status = await enrollmentAPI.status(courseId);
-        if (active) setEnrolled(Boolean(status));
+        if (active) setEnrolled(status.isEnrolled);
       } catch (error) {
         if (error.response?.status !== 404) {
           console.error(error);
