@@ -52,7 +52,6 @@ const Header = () => {
             <div className="flex items-center space-x-3">
               {isAuthenticated ? (
                 <div className="flex items-center space-x-4">
-                  {/* Clickable User Profile */}
                   <Link 
                     to={ROUTES.PROFILE}
                     className="flex items-center space-x-2 bg-blue-500/10 px-3 py-2 rounded-lg border border-blue-500/20 hover:bg-blue-500/20 hover:border-blue-500/30 transition-all duration-200 cursor-pointer group"

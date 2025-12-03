@@ -4,17 +4,23 @@ import { Button } from "@/components/ui/Button";
 import { User, Mail, Calendar, Shield, BookOpen, LayoutDashboard } from "lucide-react";
 import { Link } from "react-router-dom";
 import { ROUTES } from "@/constants/routes";
+import { formatDate } from "../utils";
 
 const Profile = () => {
   const { user } = useAuth();
 
-  const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    });
-  };
+  if (!user) {
+    return (
+      <div className="py-8">
+        <div className="container mx-auto px-4 bg-slate-800/80">
+          <h2 className="text-xl font-semibold text-white mb-2">User Not Found</h2>
+          <Button asChild className="bg-blue-600 hover:bg-blue-700">
+            <Link to={ROUTES.LOGIN}>Go to Login</Link>
+          </Button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="py-8">
@@ -47,19 +53,17 @@ const Profile = () => {
                 <Shield className="w-6 h-6 text-purple-400" />
                 <div>
                   <p className="text-sm text-gray-400">Role</p>
-                  <p className="text-white font-medium">{user?.role || 'Student'}</p>
+                  <p className="text-white font-medium">{user?.role}</p>
                 </div>
               </div>
 
-              {user?.createdAt && (
-                <div className="flex items-center space-x-3 lg:space-x-4 p-3 lg:p-4 bg-slate-700/50 rounded-lg border border-slate-600">
-                  <Calendar className="w-6 h-6 text-orange-400" />
-                  <div>
-                    <p className="text-sm text-gray-400">Member Since</p>
-                    <p className="text-white font-medium">{formatDate(user.createdAt)}</p>
-                  </div>
+              <div className="flex items-center space-x-3 lg:space-x-4 p-3 lg:p-4 bg-slate-700/50 rounded-lg border border-slate-600">
+                <Calendar className="w-6 h-6 text-orange-400" />
+                <div>
+                  <p className="text-sm text-gray-400">Member Since</p>
+                  <p className="text-white font-medium">{formatDate(user.createdAt)}</p>
                 </div>
-              )}
+              </div>
 
               <div className="flex flex-col sm:flex-row gap-3 pt-4 lg:pt-6">
                 <Button asChild className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2">
@@ -69,7 +73,7 @@ const Profile = () => {
                   </Link>
                 </Button>
                 
-                <Button asChild className="flex-1 bg-slate-600 hover:bg-slate-300 bg-white text-black py-2">
+                <Button asChild className="flex-1 hover:bg-slate-300 bg-white text-black py-2">
                   <Link to={ROUTES.DASHBOARD} className="flex items-center justify-center space-x-2">
                     <LayoutDashboard className="w-4 h-4 lg:w-5 lg:h-5" />
                     <span className="text-sm lg:text-base">Dashboard</span>
