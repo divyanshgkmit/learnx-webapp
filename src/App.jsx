@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { Toaster } from "@/components/ui/sonner";
+import { Toaster } from "@/components/ui/Sonner";
 import Layout from "@/components/layout/Layout";
 import ProtectedRoute from "@/routes/ProtectedRoute";
 import PublicRoute from "@/routes/PublicRoute";
@@ -11,6 +11,7 @@ import CourseDetail from "@/pages/CourseDetail";
 import WatchCourse from "@/pages/learning/WatchCourse";
 import Login from "@/pages/auth/Login";
 import Register from "@/pages/auth/Register";
+import Profile from "@/pages/Profile";
 import { ROUTES } from "@/constants/routes";
 
 function App() {
@@ -59,6 +60,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <WatchCourse />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={ROUTES.PROFILE}
+            element={
+              <ProtectedRoute>
+                <Profile />
               </ProtectedRoute>
             }
           />

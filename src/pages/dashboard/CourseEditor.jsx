@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { ArrowLeft, BookOpen, CheckCircle2, Layers, Loader2, PlusCircle, Save, Trash2, Video } from "lucide-react";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { toast } from "@/components/ui/sonner";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
+import { Label } from "@/components/ui/Label";
+import { toast } from "@/components/ui/Sonner";
 import { courseAPI, moduleAPI, uploadAPI } from "@/services/api";
 import { COURSE_CATEGORIES, COURSE_DIFFICULTY, COURSE_LANGUAGES } from "@/constants/courseOptions";
 import { ROUTES } from "@/constants/routes";

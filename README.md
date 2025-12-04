@@ -1,28 +1,33 @@
-# LearnX Frontend
+# LearnX LMS - Frontend
 
-Frontend application for LearnX Learning Management System built with modern React ecosystem.
-
----
+Modern React frontend for LearnX Learning Management System with complete course management and learning experience.
 
 ## Features
 
-* Role-based access for students and instructors
-* Secure authentication and authorization
-* Course creation, enrollment, and lessons watch
-* Video upload and playback integration
-* Dashboard for users and instructors
-* Responsive UI built with Tailwind CSS
-* Modular and reusable component structure
-
----
+- **Role-based Access** - Student & Instructor dashboards
+- **Course Management** - Create, browse, and manage courses  
+- **Video Learning** - Watch lessons
+- **Authentication** - Secure login/register with JWT
+- **Responsive UI** - Mobile-friendly design with Tailwind CSS
 
 ## Tech Stack
 
-| Technology        | Version | Purpose                   |
-| ----------------- | ------- | ------------------------- |
-| React             | 19.1.1  | Frontend framework        |
-| Vite              | 7.1.7   | Build tool and dev server |
-| Tailwind CSS      | 4.1.17  | CSS framework             |
-| JavaScript | ES14    | Programming language      |
-| React Router DOM  | 7.9.5   | Client-side routing       |
+| Technology | Purpose |
+|------------|---------|
+| **React** | Frontend framework |
+| **Vite** | Build tool & dev server |
+| **Tailwind CSS** | Styling framework |
+| **React Router DOM** | Client-side routing |
+| **shadcn/ui** | UI component library |
 
+## Project Structure
+
+```
+src/
+├── components/     # Reusable UI components
+├── pages/          # Route components
+├── services/       # API integration
+├── context/        # State management
+├── hooks/          # Custom hooks
+└── utils/          # Helper functions
+```
